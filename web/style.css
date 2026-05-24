@@ -1,0 +1,186 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial;
+    background:#f4f7fb;
+    color:#222;
+}
+
+header{
+    background:#0d1b2a;
+    color:white;
+    padding:20px 40px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00b4d8;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:40px 0;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h2{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#555;
+}
+
+.stats{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    width:250px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card h3{
+    font-size:40px;
+    color:#0077b6;
+}
+
+.page-title{
+    margin-bottom:30px;
+    font-size:35px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+table th{
+    background:#1b263b;
+    color:white;
+    padding:15px;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+}
+
+table tr:hover{
+    background:#f1f1f1;
+}
+
+.form-box{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    margin-bottom:30px;
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.form-box select,
+.form-box textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.form-box button{
+    background:#0077b6;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.form-box button:hover{
+    background:#023e8a;
+}
+
+.success{
+    background:#d8f3dc;
+    color:#1b4332;
+    padding:15px;
+    border-radius:6px;
+}
+
+.card-result{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+.winner{
+    background:#d8f3dc !important;
+    font-weight:bold;
+}
+
+.query-result{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+footer{
+    background:#0d1b2a;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .stats{
+        flex-direction:column;
+        align-items:center;
+    }
+
+}
