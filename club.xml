@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<club xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="club.xsd" nom="Info_Tech">
+<!-- ═══ CATEGORIES ═══ -->
+  <categories>
+    <categorie id="C1" libelle="Intelligence Artificielle"/>
+    <categorie id="C2" libelle="Developpement Web"/>
+    <categorie id="C3" libelle="Securite Informatique"/>
+  </categories>
+  <!-- ═══ MEMBRES ═══ -->
+  <membres>
+    <membre id="M001" categorieRef="C1">
+      <nom>Bounour</nom>
+      <prenom>Ahmed</prenom>
+      <email>A.bounour@club.dz</email>
+    </membre>
+
+    <membre id="M002" categorieRef="C1">
+      <nom>Ali guechi</nom>
+      <prenom>Nerimane</prenom>
+      <email>n.Aliguechi@club.dz</email>
+    </membre>
+
+    <membre id="M003" categorieRef="C1">
+      <nom>guechi</nom>
+      <prenom>Manare</prenom>
+      <email>M.guechi@club.dz</email>
+    </membre>
+
+    <membre id="M004" categorieRef="C2">
+      <nom>Bourbia</nom>
+      <prenom>lamin</prenom>
+      <email>L.Bourbia@club.dz</email>
+    </membre>
+
+    <membre id="M005" categorieRef="C2">
+      <nom>Boudelaa</nom>
+      <prenom>Djamila</prenom>
+      <email>d.Boudelaa@club.dz</email>
+    </membre>
+
+    <membre id="M006" categorieRef="C2">
+      <nom>Meziane</nom>
+      <prenom>Nour</prenom>
+      <email>n.Meziane@club.dz</email>
+    </membre>
+
+    <membre id="M007" categorieRef="C3">
+      <nom>Bensaid</nom>
+      <prenom>Amine</prenom>
+      <email>a.bensaid@club.dz</email>
+    </membre>
+
+    <membre id="M008" categorieRef="C3">
+      <nom>Zerrouki</nom>
+      <prenom>Taha</prenom>
+      <email>t.Zerrouki@club.dz</email>
+    </membre>
+
+    <membre id="M009" categorieRef="C3">
+      <nom>Belahsen</nom>
+      <prenom>Imene</prenom>
+      <email>i.Belahsen@club.dz</email>
+    </membre>
+
+<membre id="M010" categorieRef="C1">
+      <nom>bechiri</nom>
+      <prenom>Abdurrahmane</prenom>
+      <email>A.bechiri@club.dz</email>
+    </membre>
+
+    <membre id="M011" categorieRef="C1">
+      <nom>Bouafia</nom>
+      <prenom>Ouissale</prenom>
+      <email>o.bouafia@club.dz</email>
+    </membre>
+
+    <membre id="M012" categorieRef="C1">
+      <nom>Alalo</nom>
+      <prenom>mohamed</prenom>
+      <email>m.Alalo@club.dz</email>
+    </membre>
+
+    <membre id="M013" categorieRef="C1">
+      <nom>Alouche</nom>
+      <prenom>Mariame</prenom>
+      <email>M.Alouche@club.dz</email>
+    </membre>
+  </membres>
+   <!-- ═══ CONCOURS ═══ -->
+  <concours>
+
+    <concours id="CO1" categorieRef="C1" date="2026-03-15" coefficient="1.5">
+      <titre>Concours IA Printemps 2026</titre>
+      <participants>
+        <participant membreRef="M001">
+          <complexite>95</complexite>
+          <tempsExecution>120</tempsExecution>
+        </participant>
+
+        <participant membreRef="M002">
+          <complexite>90</complexite>
+          <tempsExecution>140</tempsExecution>
+        </participant>
+
+        <participant membreRef="M003">
+          <complexite>85</complexite>
+          <tempsExecution>100</tempsExecution>
+        </participant>
+     
+      </participants>
+    </concours>
+
+    <concours id="CO2" categorieRef="C2" date="2026-06-15" coefficient="1.1">
+      <titre>Concours WEB 2026</titre>
+      <participants>
+        <participant membreRef="M004">
+          <complexite>75</complexite>
+          <tempsExecution>120</tempsExecution>
+        </participant>
+
+        <participant membreRef="M005">
+          <complexite>90</complexite>
+          <tempsExecution>150</tempsExecution>
+        </participant>
+
+        <participant membreRef="M006">
+          <complexite>98</complexite>
+          <tempsExecution>160</tempsExecution>
+        </participant>
+      </participants>
+    </concours>
+
+    <concours id="CO3" categorieRef="C3" date="2026-07-07" coefficient="1.9">
+      <titre>Hackathon 2026</titre>
+      <participants>
+        <participant membreRef="M007">
+          <complexite>99</complexite>
+          <tempsExecution>90</tempsExecution>
+        </participant>
+
+        <participant membreRef="M008">
+          <complexite>80</complexite>
+          <tempsExecution>110</tempsExecution>
+        </participant>
+
+        <participant membreRef="M009">
+          <complexite>87</complexite>
+          <tempsExecution>110</tempsExecution>
+        </participant>
+</participants>
+    </concours>
+
+        <concours id="CO4" categorieRef="C1" date="2026-10-15" coefficient="1.3">
+      <titre> IA medical data</titre>
+      <participants>
+        <participant membreRef="M011">
+          <complexite>90</complexite>
+          <tempsExecution>130</tempsExecution>
+        </participant>
+
+        <participant membreRef="M012">
+          <complexite>79</complexite>
+          <tempsExecution>140</tempsExecution>
+        </participant>
+
+        <participant membreRef="M013">
+          <complexite>60</complexite>
+          <tempsExecution>100</tempsExecution>
+        </participant>
+     
+      </participants>
+    </concours>
+  
+
+  </concours>
+
+</club>
