@@ -19,9 +19,39 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- email contains @ -->
   <xs:simpleType name="typeEmail">
     <xs:restriction base="xs:string">
-      <xs:pattern value=".+@.+\..+"/>
+      <xs:pattern value=".+@.+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- coefficient > 0 -->
+  <xs:simpleType name="typeCoefficient">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- complexite [0,100] -->
+  <xs:simpleType name="typeComplexite">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- tempsExecution > 0 -->
+  <xs:simpleType name="typeTempsExecution">
+    <xs:restriction base="xs:integer">
+      <xs:minExclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- non empty string -->
+  <xs:simpleType name="typeNonVide">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -35,7 +65,7 @@
               <xs:element name="categorie" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:attribute name="id" type="typeIdCategorie" use="required"/>
-                  <xs:attribute name="libelle" type="xs:string" use="required"/>
+                  <xs:attribute name="libelle" type="typeNonVide" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -48,8 +78,8 @@
               <xs:element name="membre" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="nom" type="xs:string"/>
-                    <xs:element name="prenom" type="xs:string"/>
+                    <xs:element name="nom" type="typeNonVide"/>
+                    <xs:element name="prenom" type="typeNonVide"/>
                     <xs:element name="email" type="typeEmail"/>
                   </xs:sequence>
                   <xs:attribute name="id" type="typeIdMembre" use="required"/>
@@ -66,15 +96,15 @@
               <xs:element name="concours" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="titre" type="xs:string"/>
+                    <xs:element name="titre" type="typeNonVide"/>
                     <xs:element name="participants">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="participant" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="complexite" type="xs:integer"/>
-                                <xs:element name="tempsExecution" type="xs:integer"/>
+                                <xs:element name="complexite" type="typeComplexite"/>
+                                <xs:element name="tempsExecution" type="typeTempsExecution"/>
                               </xs:sequence>
                               <xs:attribute name="membreRef" type="xs:IDREF" use="required"/>
                             </xs:complexType>
@@ -86,7 +116,7 @@
                   <xs:attribute name="id" type="typeIdConcours" use="required"/>
                   <xs:attribute name="categorieRef" type="xs:IDREF" use="required"/>
                   <xs:attribute name="date" type="xs:date" use="required"/>
-                  <xs:attribute name="coefficient" type="xs:decimal" use="required"/>
+                  <xs:attribute name="coefficient" type="typeCoefficient" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -94,7 +124,7 @@
         </xs:element>
 
       </xs:sequence>
-      <xs:attribute name="nom" type="xs:string"/>
+      <xs:attribute name="nom" type="typeNonVide"/>
     </xs:complexType>
 
     <xs:key name="PK_Categorie">
