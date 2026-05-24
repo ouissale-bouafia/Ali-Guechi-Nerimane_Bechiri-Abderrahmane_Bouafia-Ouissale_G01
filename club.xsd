@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:simpleType name="typeIdCategorie">
+    <xs:restriction base="xs:ID">
+      <xs:pattern value="C[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeIdMembre">
+    <xs:restriction base="xs:ID">
+      <xs:pattern value="M[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeIdConcours">
+    <xs:restriction base="xs:ID">
+      <xs:pattern value="CO[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeEmail">
+    <xs:restriction base="xs:string">
+      <xs:pattern value=".+@.+\..+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="club">
+    <xs:complexType>
+      <xs:sequence>
+        
+        <xs:element name="categories">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="categorie" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id" type="typeIdCategorie" use="required"/>
+                  <xs:attribute name="libelle" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="membres">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="membre" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="nom" type="xs:string"/>
+                    <xs:element name="prenom" type="xs:string"/>
+                    <xs:element name="email" type="typeEmail"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="typeIdMembre" use="required"/>
+                  <xs:attribute name="categorieRef" type="xs:IDREF" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="concours">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="concours" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="titre" type="xs:string"/>
+                    <xs:element name="participants">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="participant" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="complexite" type="xs:integer"/>
+                                <xs:element name="tempsExecution" type="xs:integer"/>
+                              </xs:sequence>
+                              <xs:attribute name="membreRef" type="xs:IDREF" use="required"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="typeIdConcours" use="required"/>
+                  <xs:attribute name="categorieRef" type="xs:IDREF" use="required"/>
+                  <xs:attribute name="date" type="xs:date" use="required"/>
+                  <xs:attribute name="coefficient" type="xs:decimal" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+      <xs:attribute name="nom" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:key name="PK_Categorie">
+      <xs:selector xpath="categories/categorie"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+
+    <xs:keyref name="FK_Membre_To_Cat" refer="PK_Categorie">
+      <xs:selector xpath="membres/membre"/>
+      <xs:field xpath="@categorieRef"/>
+    </xs:keyref>
+
+    <xs:keyref name="FK_Concours_To_Cat" refer="PK_Categorie">
+      <xs:selector xpath="concours/concours"/>
+      <xs:field xpath="@categorieRef"/>
+    </xs:keyref>
+
+    <xs:key name="PK_Membre">
+      <xs:selector xpath="membres/membre"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+
+    <xs:keyref name="FK_Participant_To_Membre" refer="PK_Membre">
+      <xs:selector xpath="concours/concours/participants/participant"/>
+      <xs:field xpath="@membreRef"/>
+    </xs:keyref>
+
+  </xs:element>
+</xs:schema>
